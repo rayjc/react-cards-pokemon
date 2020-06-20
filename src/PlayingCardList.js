@@ -6,7 +6,7 @@ import "./PlayingCardList.css";
 /* Renders a list of playing cards.
  * Can also add a new card at random. */
 function CardTable() {
-  const [cards, addCard] = useAxios("https://deckofcardsapi.com/api/deck/new/draw/");
+  const [cards, addCard, clearCards] = useAxios("https://deckofcardsapi.com/api/deck/new/draw/");
 
   return (
     <div className="PlayingCardList">
@@ -14,6 +14,7 @@ function CardTable() {
       <div>
         <button onClick={() => addCard()}>Add a playing card!</button>
       </div>
+      {!!cards.length && <button onClick={clearCards}>Clear</button>}
       <div className="PlayingCardList-card-area">
         {cards.map(card => (
           <PlayingCard key={card.id} front={card.data.cards[0].image} />

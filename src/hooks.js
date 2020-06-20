@@ -27,7 +27,9 @@ const useAxios = (baseUrl) => {
     }
   }
 
-  return [data, addData];
+  const clearAllData = () => setData([]);
+
+  return [data, addData, clearAllData];
 }
 
 export { useAxios, useFlip };
